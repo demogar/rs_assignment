@@ -1,0 +1,28 @@
+doctype html
+html
+  head
+  	meta charset="utf-8"
+
+    title RightScale
+
+    / css
+
+    / javascript
+    script src="/js/zepto.min.js"
+    script src="/js/underscore.min.js"
+    script src="/js/backbone.min.js"
+    script src="/js/handlebars.js"
+
+    / app
+    script src="/js/app.js"
+
+  body
+  	div id="content"
+    	== yield
+
+
+    <script id="home-template" type="text/x-handlebars-template">
+      <ul id="people_list"></ul>
+      <div id="add_person_container"></div>
+      <a class="add_people" href="#">Add people</a>
+    </script>

@@ -8,7 +8,7 @@ html
     / css
 
     / javascript
-    script src="/js/zepto.min.js"
+    script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"
     script src="/js/underscore.min.js"
     script src="/js/backbone.min.js"
     script src="/js/handlebars.js"
@@ -23,6 +23,8 @@ html
 
     script id="home-template" type="text/x-handlebars-template"
       <ul id="people_list"></ul>
+      div id="edit_user_container"
+
       <div id="add_person_container">
         <form>
           <input id="input_name" type="text" />
@@ -31,8 +33,16 @@ html
       </div>
     </script>
 
-    script id="person-row" type="text/x-handlebars-template"
-      '  <li>
-      '  {{name}}
-      '  <a href="#" class="edit_user" data-person-id="{{id}}">Edit</a>
-      '  </li>
+    script id="person-row-template" type="text/x-handlebars-template"
+      '<li id="person-{{id}}">
+      ' {{name}}: <span class="current_selection">{{#if selection_id}}{{selection.value}}{{else}}<strong>Unset</strong>{{/if}}</span>
+      ' <a href="#" class="edit_user" data-person-id="{{id}}">Edit</a>
+      ' <div class="edit_form_container" style="display:inline"></div>
+      '</li>
+
+    script id="person-edit-form-template" type="text/x-handlebars-template"
+      '<select>
+      ' {{#each data.selections}}
+      '   <option value="{{id}}">{{value}}</option>
+      ' {{/each}}
+      '</select> <button class="save_button" data-person-id="{{data.person.id}}">Save</button> <button class="cancel_button" data-person-id="{{data.person.id}}">Cancel</button>

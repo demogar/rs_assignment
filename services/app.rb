@@ -16,7 +16,6 @@ enable :sessions
 # ---
 DataMapper.setup(:default, ENV['DATABASE_URL'] || "sqlite://#{Dir.pwd}/rs.db")
 require_relative 'models/init'
-DataMapper.auto_migrate!
 DataMapper.finalize
 
 # ---
@@ -34,30 +33,41 @@ end
 # API REQUESTS
 # ---
 get '/selections' do
+  content_type :json
   Selection.all.to_json
 end
 
 get '/people' do
-  Person.all.to_json
+  content_type :json
+  Person.all().to_json(:methods => [:selection])
 end
 
 post '/people' do
-  @name = params[:name]
+  content_type :json
+
+  @request_body = JSON.parse(request.body.read.to_s)
+  @name = @request_body["name"]
 
   @person = Person.new
   @person.name = @name
   @person.created_at = Time.now
 
   if @person.save
-    puts "#{@name} created"
-    return json :error => 'false', :msg => 'cool'
+    return @person.to_json(:methods => [:selection])
   else
     return json :error => 'true', :msg => @person.errors.to_s
   end
 end
 
-get '/person/:id' do
+get '/people/:id' do
+  content_type :json
+  Person.get(params[:id].to_i).to_json(:methods => [:selection])
 end
 
-post '/person/:id' do
+put '/people/:id' do
+  content_type :json
+  data = JSON.parse(request.body.read)
+  @person = Person.first_or_create(:id => params[:id].to_i).update(:selection_id => data["selection_id"].to_i)
+
+  Person.get(params[:id].to_i).to_json(:methods => [:selection])
 end

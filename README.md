@@ -8,12 +8,14 @@ jar jar, here's the README.
 
 - jQuery
 - Backbone
+- Handlebars
 
 ## Backend
 
 - Ruby
 - Sinatra
 - DataMapper (ORM)
+- Slim
 
 # How to Run?
 

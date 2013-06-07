@@ -1,5 +1,6 @@
 // Views
 App.Views.HomeView = Backbone.View.extend({
+
 	events : {
 		"click #create_person" : "sendForm",
 		"click .edit_user" : "editUser",
@@ -12,18 +13,18 @@ App.Views.HomeView = Backbone.View.extend({
 		this.collection = new App.Collections.People();
 		this.collection.bind('reset', this.addAll, this);
 		this.collection.bind('add', this.addOne, this);
-		this.collection.fetch({reset: true});
-
-		// List of selections, for the select box
-		this.selections = new App.Collections.Selections();
-		this.selections.bind('reset', this.addAllSelections, this);
-		this.selections.fetch({reset: true});
 	},
 
 	render: function () {
 		var source = $("#home-template").html();
 		var template = Handlebars.compile(source);
 		this.$el.html( template() );
+
+		// List of selections, for the select box
+		this.selections = new App.Collections.Selections();
+		this.selections.bind('reset', this.addAllSelections, this);
+		this.selections.fetch({reset: true});
+		
 		return this;
 	},
 

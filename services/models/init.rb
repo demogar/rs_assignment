@@ -14,5 +14,5 @@ class Person
   property :name, String
   property :created_at, DateTime
 
-  belongs_to :selection, :model => Selection
+  belongs_to :selection, :model => Selection, :required => false
 end

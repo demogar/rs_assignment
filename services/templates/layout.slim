@@ -21,8 +21,18 @@ html
     	== yield
 
 
-    <script id="home-template" type="text/x-handlebars-template">
+    script id="home-template" type="text/x-handlebars-template"
       <ul id="people_list"></ul>
-      <div id="add_person_container"></div>
-      <a class="add_people" href="#">Add people</a>
+      <div id="add_person_container">
+        <form>
+          <input id="input_name" type="text" />
+          <button id="create_person">Create</button>
+        </form>
+      </div>
     </script>
+
+    script id="person-row" type="text/x-handlebars-template"
+      '  <li>
+      '  {{name}}
+      '  <a href="#" class="edit_user" data-person-id="{{id}}">Edit</a>
+      '  </li>

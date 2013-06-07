@@ -41,6 +41,21 @@ get '/people' do
   Person.all.to_json
 end
 
+post '/people' do
+  @name = params[:name]
+
+  @person = Person.new
+  @person.name = @name
+  @person.created_at = Time.now
+
+  if @person.save
+    puts "#{@name} created"
+    return json :error => 'false', :msg => 'cool'
+  else
+    return json :error => 'true', :msg => @person.errors.to_s
+  end
+end
+
 get '/person/:id' do
 end
 

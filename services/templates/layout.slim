@@ -6,6 +6,7 @@ html
     title RightScale
 
     / css
+    link href='/css/application.css' rel='stylesheet' type='text/css'
 
     / javascript
     script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"
@@ -45,4 +46,4 @@ html
       ' {{#each data.selections}}
       '   <option value="{{id}}">{{value}}</option>
       ' {{/each}}
-      '</select> <button class="save_button" data-person-id="{{data.person.id}}">Save</button> <button class="cancel_button" data-person-id="{{data.person.id}}">Cancel</button>
+      '</select> <span class="btn_container"><a href="#" class="save_button" data-person-id="{{data.person.id}}">Save</a> <a href="#" class="cancel_button" data-person-id="{{data.person.id}}">Cancel</a></span>

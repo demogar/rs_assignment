@@ -15,7 +15,7 @@ jar jar, here's the README.
 - Ruby
 - Sinatra
 - DataMapper (ORM)
-- Slim
+- -Slim-
 
 # How to Run?
 

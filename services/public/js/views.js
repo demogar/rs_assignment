@@ -31,13 +31,13 @@ App.Views.HomeView = Backbone.View.extend({
 		that = this;
 		evt.preventDefault();
 
-		if ($(this.el).find("#input_name").val() !== "") {
+		if (this.$el.find("#input_name").val() !== "") {
 			var person = new App.Models.Person();
-			var params = { name : $(this.el).find("#input_name").val() };
+			var params = { name : this.$el.find("#input_name").val() };
 			person.save(params, {
 				success : function (model, response) {
 					that.addOne(model);
-					$(that.el).find("#input_name").val("");
+					that.$el.find("#input_name").val("");
 				}
 			});
 		} else {
@@ -48,12 +48,12 @@ App.Views.HomeView = Backbone.View.extend({
 	addOne : function(person) {
 		var source = $("#person-row-template").html();
 		var template = Handlebars.compile(source);
-		$(this.el).find("ul#people_list").append( template(person.toJSON()) );
+		this.$el.find("ul#people_list").append( template(person.toJSON()) );
 	},
 
 	addAll : function () {
 		that = this;
-		$(this.el).find("#people_list").html("");
+		this.$el.find("#people_list").html("");
 		if (this.collection.length > 0) {
 			var source = $("#person-row").html();
 			this.collection.each(this.addOne, this);
@@ -98,16 +98,16 @@ App.Views.HomeView = Backbone.View.extend({
 
 	showForm : function(personId) {
 		// hide edit button
-		$(this.el).find("li#person-"+personId+" .edit_user").hide();
-		$(this.el).find("li#person-"+personId+" .current_selection").hide();
+		this.$el.find("li#person-"+personId+" .edit_user").hide();
+		this.$el.find("li#person-"+personId+" .current_selection").hide();
 	},
 
 	hideForm : function(personId) {
 		// remove form
-		$(this.el).find("li#person-"+personId+" .edit_form_container").html("");
+		this.$el.find("li#person-"+personId+" .edit_form_container").html("");
 		// show edit button
-		$(this.el).find("li#person-"+personId+" .edit_user").show();
-		$(this.el).find("li#person-"+personId+" .current_selection").show();
+		this.$el.find("li#person-"+personId+" .edit_user").show();
+		this.$el.find("li#person-"+personId+" .current_selection").show();
 	},
 
 	cancelEdit : function(evt) {

@@ -7,7 +7,7 @@ require 'data_mapper'
 require "dm-sqlite-adapter"
 require 'dm-serializer'
 
-require 'slim'
+# require 'slim'
 
 enable :sessions
 
@@ -26,7 +26,7 @@ set :views, File.dirname(__FILE__) + '/templates'
 
 # ---
 get '/' do
-  slim :index
+  erb :index
 end
 
 # ---

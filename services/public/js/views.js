@@ -1,6 +1,5 @@
 // Views
 App.Views.HomeView = Backbone.View.extend({
-
 	events : {
 		"click #create_person" : "sendForm",
 		"click .edit_user" : "editUser",
@@ -24,11 +23,11 @@ App.Views.HomeView = Backbone.View.extend({
 		this.selections = new App.Collections.Selections();
 		this.selections.bind('reset', this.addAllSelections, this);
 		this.selections.fetch({reset: true});
-		
+
 		return this;
 	},
 
-	sendForm : function(evt) {
+	sendForm : function (evt) {
 		that = this;
 		evt.preventDefault();
 
@@ -46,7 +45,7 @@ App.Views.HomeView = Backbone.View.extend({
 		}
 	},
 
-	addOne : function(person) {
+	addOne : function (person) {
 		var source = $("#person-row-template").html();
 		var template = Handlebars.compile(source);
 		this.$el.find("ul#people_list").append( template(person.toJSON()) );
@@ -61,14 +60,14 @@ App.Views.HomeView = Backbone.View.extend({
 		}
 	},
 
-	addAllSelections : function() {
+	addAllSelections : function () {
 		// Store this as a JavaScript object
 		// so we don't need to fetch it for
 		// every request
 		App.Stored.selections = this.selections;
 	},
 
-	editUser : function(evt) {
+	editUser : function (evt) {
 		evt.preventDefault();
 		var personId = $(evt.currentTarget).attr("data-person-id");
 
@@ -97,13 +96,13 @@ App.Views.HomeView = Backbone.View.extend({
 		$(this.el).find("li#person-"+id+" .edit_form_container").html(template(obj));
 	},
 
-	showForm : function(personId) {
+	showForm : function (personId) {
 		// hide edit button
 		this.$el.find("li#person-"+personId+" .edit_user").hide();
 		this.$el.find("li#person-"+personId+" .current_selection").hide();
 	},
 
-	hideForm : function(personId) {
+	hideForm : function (personId) {
 		// remove form
 		this.$el.find("li#person-"+personId+" .edit_form_container").html("");
 		// show edit button
@@ -111,13 +110,13 @@ App.Views.HomeView = Backbone.View.extend({
 		this.$el.find("li#person-"+personId+" .current_selection").show();
 	},
 
-	cancelEdit : function(evt) {
+	cancelEdit : function (evt) {
 		evt.preventDefault();
 		var personId = $(evt.currentTarget).attr("data-person-id");
 		this.hideForm(personId);
 	},
 
-	savePerson : function(evt) {
+	savePerson : function (evt) {
 		that = this;
 		evt.preventDefault();
 

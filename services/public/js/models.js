@@ -23,7 +23,7 @@ App.Collections.Selections = Backbone.Collection.extend({
 App.Collections.People = Backbone.Collection.extend({
 	url : App.Configs.baseUrl + "/people",
 	model : App.Models.Person,
-	initialize : function() {
+	initialize : function () {
 		this.fetch({reset : true});
 	}
 });

@@ -1,27 +1,29 @@
 # About
 
-jar jar, here's the README.
+Jar jar, here's the README.
 
 # Technologies
 
 ## Frontend
 
-- jQuery
+- ~~Zepto~~ (removed and replaced with jQuery)
+- jQuery: DOM manipulation
 - Backbone
-- Handlebars
+- Handlebars: Template engine
 
 ## Backend
 
 - Ruby
 - Sinatra
-- DataMapper (ORM)
-- ~~Slim~~ (removed and replaced by plain, old, and boring ERB)
+- DataMapper: ORM
+- ~~Slim~~ (removed and replaced with plain, old, and boring ERB)
+- Thin
 
 # How to Run?
 
 ## Services
 
-    cd /services
+    cd services
     bundle install
     ruby app.rb
 
@@ -29,7 +31,7 @@ Then, open <http://localhost:4567>
 
 If you prefer to use the Rack Adapter, just:
 
-    cd /services
+    cd services
     bundle install
     thin start
 

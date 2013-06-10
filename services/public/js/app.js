@@ -1,7 +1,7 @@
 // Module pattern
 var App = App || {};
 App.Configs = {
-	baseUrl : "http://localhost:4567"
+	baseUrl : ""
 };
 App.Stored = {},
 App.Collections = {},

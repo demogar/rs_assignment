@@ -15,7 +15,7 @@ jar jar, here's the README.
 - Ruby
 - Sinatra
 - DataMapper (ORM)
-- -Slim-
+- ~~Slim~~ (removed and replaced by plain, old, and boring ERB)
 
 # How to Run?
 
@@ -24,3 +24,13 @@ jar jar, here's the README.
     cd /services
     bundle install
     ruby app.rb
+
+Then, open <http://localhost:4567>
+
+If you prefer to use the Rack Adapter, just:
+
+    cd /services
+    bundle install
+    thin start
+
+Then, open <http://localhost:3000> (notice the port)
